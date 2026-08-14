@@ -36,7 +36,7 @@ pip install openai rich
 {
     "base_url": "https://api.deepseek.com",
     "api_key": "sk-你的key",
-    "model": "deepseek-chat"
+    "model": "deepseek-v4-flash"
 }
 ```
 

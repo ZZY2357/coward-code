@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 配置与密钥（含 API key，切勿提交）
+model.json
+.env
+*.local
+
+# 临时调试文件
+gh_*.txt
+auth_status.txt
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

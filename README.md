@@ -150,3 +150,5 @@ coward-code/
 ---
 
 **Made with 🐤 by ZZY2357** — 学习 Agent 原理，从自己手写一个开始。
+
+本 README 骄傲地由 Coward Code 生成。

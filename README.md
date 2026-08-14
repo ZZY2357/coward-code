@@ -1,5 +1,7 @@
 # Coward Code 🐤
 
+> 🎉 **本 README 骄傲地由 Coward Code 生成！**
+
 > 教学项目：手写一个简单的 Claude Code / Cursor 式终端 AI 编程助手。
 
 一个用 **Python + OpenAI SDK + DeepSeek** 从零实现的命令行 AI Agent。核心只有 200 行代码，却实现了 Claude Code 最精髓的能力——**让模型自主调用工具（读文件 / 写文件 / 执行命令 / 修改代码）并循环执行**。
@@ -150,5 +152,3 @@ coward-code/
 ---
 
 **Made with 🐤 by ZZY2357** — 学习 Agent 原理，从自己手写一个开始。
-
-本 README 骄傲地由 Coward Code 生成。

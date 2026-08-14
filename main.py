@@ -134,13 +134,17 @@ def write(path, content):
         return f'Failed to write: { e }'
 
 
+import shutil
+
+
 def bash(command):
     try:
         result = subprocess.run(
-            ['pwsh', '-Command', command],
-            shell=True,
+            [shutil.which('pwsh'), '-NoProfile', '-NonInteractive', '-Command', command],
             capture_output=True, # 捕获输出，而不是直接打印到屏幕上
-            text=True # 文本而不是字节
+            text=True, # 文本而不是字节
+            encoding='utf-8',
+            errors='replace' # 解码失败不抛异常（输出可能混 GBK/UTF-8）
         )
         return f'stdout:\n{ result.stdout }\nstderr:\n{ result.stderr }'
     except Exception as e:

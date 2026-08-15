@@ -19,3 +19,5 @@ auth_status.txt
 .idea/
 .DS_Store
 Thumbs.db
+
+.pi-glla/

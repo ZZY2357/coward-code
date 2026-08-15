@@ -2,9 +2,11 @@ from openai import OpenAI
 import os
 import json
 import subprocess
-from rich import print
+from rich.console import Console
 from rich.markdown import Markdown
 from rich.panel import Panel
+
+console = Console()
 
 # 配置模型
 config = {}
@@ -179,7 +181,7 @@ messages = [{
 
 client = OpenAI(api_key=config['api_key'], base_url=config['base_url'])
 
-print(Panel(f'Model: { config["model"] }\nShell: { config["shell"] }', title='Welcome to Coward Code!', subtitle='Made by zzy2357.'))
+console.print(Panel(f'Model: { config["model"] }\nShell: { config["shell"] }', title='Welcome to Coward Code!', subtitle='Made by zzy2357.'))
 
 while True:
     user_input = input('> ')
@@ -211,7 +213,7 @@ while True:
             rc = getattr(delta, 'reasoning_content', None)  # DeepSeek 扩展字段，SDK 的 ChoiceDelta 未声明
             if rc:
                 reasoning_content += rc
-                print(rc, end='', flush=True)
+                console.print(rc, end='', style='grey42', highlight=False)  # style= 不解析内容里的方括号
             if delta.content:
                 content += delta.content
             if delta.tool_calls:
@@ -228,9 +230,9 @@ while True:
                             entry['function']['arguments'] += tc.function.arguments
 
         if reasoning_content:
-            print(flush=True)  # 收尾 thinking 行
+            console.print()  # 收尾 thinking 行
         if content:
-            print(Markdown(content), flush=True)
+            console.print(Markdown(content))
 
         assistant_msg = {'role': 'assistant', 'content': content or None}
         if tool_calls:
@@ -251,7 +253,7 @@ while True:
             if len(body) > 2000:
                 body = body[:2000] + '\n...'
             header = f"$ { args['command'] }" if fn['name'] == 'bash' else fn['name']
-            print(f"[grey42]{ header }\n{ body }[/grey42]")
+            console.print(f"{header}\n{body}", style='grey42', highlight=False)
             messages.append({
                 "role": "tool",
                 "tool_call_id": tool['id'],
